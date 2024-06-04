@@ -33,6 +33,11 @@ while True:
     # Draw landmarks if hands are detected
     if multipleHands:
         for multipleHand in multipleHands:
+            for id,lm in enumerate(multipleHand.landmark):
+                h, w, c = frame.shape
+                cx, cy = int(lm.x * w), int(lm.y * h)
+                print(id, cx, cy)
+                cv2.circle(frame, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
             mpDraw.draw_landmarks(frame, multipleHand, mpHands.HAND_CONNECTIONS )
 
     currentTime = time.time()
