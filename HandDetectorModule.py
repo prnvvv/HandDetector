@@ -45,14 +45,18 @@ class HandDetector:
                         h, w, c = frame.shape
                         cx, cy = int(lm.x * w), int(lm.y * h)
                         print(id, cx, cy)
-                        cv2.circle(frame, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+
+                        if id in [0, 2, 4, 5, 8, 9, 12, 13, 16, 17, 20]:
+
+                            cv2.circle(frame, (cx, cy), 10, (255, 0, 0), 3, cv2.FILLED)
+
                     self.mpDraw.draw_landmarks(frame, multipleHand, self.mpHands.HAND_CONNECTIONS)
 
             currentTime = time.time()
             fps = 1 / (currentTime - previousTime)
             previousTime = currentTime
 
-            cv2.putText(frame, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 0, 255), 3)
+            cv2.putText(frame, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 0, 0), 3)
 
             cv2.imshow("Webcam Frame", frame)
 
