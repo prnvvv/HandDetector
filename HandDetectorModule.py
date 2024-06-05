@@ -32,6 +32,7 @@ class HandDetector():
         return frame
 
 def main():
+    
     previousTime = 0
 
     cap = cv2.VideoCapture(0)
