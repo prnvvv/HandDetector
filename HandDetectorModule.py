@@ -39,7 +39,6 @@ class HandDetector:
                     for id, lm in enumerate(multipleHand.landmark):
                         h, w, c = frame.shape
                         cx, cy = int(lm.x * w), int(lm.y * h)
-                        print(id, cx, cy)
 
                         if id in [0, 2, 4, 5, 8, 9, 12, 13, 16, 17, 20]:
                             cv2.circle(frame, (cx, cy), 10, (255, 0, 0), 3, cv2.FILLED)
@@ -51,6 +50,7 @@ class HandDetector:
             previousTime = currentTime
 
             cv2.putText(frame, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 0, 0), 3)
+
             cv2.imshow("Webcam Frame", frame)
 
             if cv2.waitKey(1) == ord('q'):
@@ -60,5 +60,5 @@ class HandDetector:
         cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    hand_detector = HandDetector(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.7, min_tracking_confidence=0.7)
+    hand_detector = HandDetector()
     hand_detector.detect_hands()
