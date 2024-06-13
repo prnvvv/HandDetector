@@ -19,7 +19,7 @@ class HandDetector:
         )
         self.mpDraw = mp.solutions.drawing_utils
 
-    def detect_hands(self):
+    def detectHands(self):
         previousTime = 0
         currentTime = 0
 
@@ -61,4 +61,4 @@ class HandDetector:
 
 if __name__ == "__main__":
     hand_detector = HandDetector()
-    hand_detector.detect_hands()
+    hand_detector.detectHands()
